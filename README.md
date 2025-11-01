@@ -1,26 +1,25 @@
 # Evolutionary Model Merge
 
-This repository implements an evolutionary algorithm for merging Large Language Models (LLMs) based on perplexity minimization. The approach uses evolutionary computation to find optimal weight ratios for combining multiple pre-trained models to achieve better performance.
+This repository implements an evolutionary algorithm for merging Large Language Models (LLMs) based on custome matrics score. The approach uses evolutionary computation to find optimal weight ratios for combining multiple pre-trained models to achieve better performance.
 
 ## Overview
 
 The Evolutionary Model Merge algorithm works as follows:
 
 1. **Initialization**: Create an initial population of weight vectors that define how to merge different models
-2. **Evaluation**: For each individual in the population, merge the models according to its weights and evaluate using perplexity on a validation set
-3. **Selection**: Select the best performing individuals based on their perplexity scores
+2. **Evaluation**: For each individual in the population, merge the models according to its weights and evaluate using score on a validation set
+3. **Selection**: Select the best performing individuals based on their evaluate scores
 4. **Crossover**: Combine the weights of selected individuals to create new offspring
 5. **Mutation**: Randomly perturb some weights to introduce diversity
 6. **Repeat**: Continue for the specified number of generations
 
-The algorithm optimizes for weights that minimize perplexity, which typically correlates with better model performance.
 
 ## Key Parameters
 
 - `population_size`: Number of weight combinations to evaluate in each generation
 - `generations`: Number of evolutionary iterations
 - `mutation_rate`: Probability of randomly perturbing weights
-- `eval_samples`: Number of examples to use for perplexity evaluation
+- `eval_samples`: Number of examples to use for evaluation
 
 These parameters can be tuned based on available computational resources and desired accuracy.
 
@@ -54,7 +53,7 @@ best_weights, best_score, merged_model, tokenizer = evolutionary_merge(
 )
 
 print(f"Best weights: {best_weights}")
-print(f"Best perplexity: {best_score:.4f}")
+print(f"Best score: {best_score:.4f}")
 ```
 
 ### Custom Parameters

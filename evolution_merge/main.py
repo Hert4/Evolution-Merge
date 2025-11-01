@@ -38,7 +38,7 @@ def main():
         
         print(f"\nOptimization Complete!")
         print(f"Best weights: {best_weights}")
-        print(f"Best perplexity: {best_score:.4f}")
+        print(f"Best score: {best_score:.4f}")
         
         # Show an example of how you might use the merged model
         print(f"\nMerged model is ready for use.")

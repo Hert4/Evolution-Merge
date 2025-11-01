@@ -36,7 +36,7 @@ def example_basic_usage():
         )
         
         print(f"Best weights: {best_weights}")
-        print(f"Best perplexity: {best_score:.4f}")
+        print(f"Best score: {best_score:.4f}")
         print("Merged model created successfully!\n")
         
     except Exception as e:
@@ -69,7 +69,7 @@ def example_custom_parameters():
         )
         
         print(f"Best weights: {best_weights}")
-        print(f"Best perplexity: {best_score:.4f}")
+        print(f"Best score: {best_score:.4f}")
         print("Merged model created with custom parameters!\n")
         
     except Exception as e:
@@ -103,7 +103,7 @@ def example_different_models():
             )
             
             print(f"Best weights: {best_weights}")
-            print(f"Best perplexity: {best_score:.4f}")
+            print(f"Best score: {best_score:.4f}")
             print("Merged model created with different models!\n")
             
         except Exception as e:
