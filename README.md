@@ -98,4 +98,9 @@ This implementation is based on the concept of evolutionary computation applied 
 > Thank you, Qwen3, for helping me to reconstruct this repo.
 
 ## License
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0) — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Custom Non-Commercial License (Hert4 License).
+
+You may view and modify the code for personal or research use only.
+Redistribution or commercial use of the source code is not permitted.
+See the [LICENSE](LICENSE) file for full details.
+
