@@ -111,3 +111,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 This implementation is based on the concept of evolutionary computation applied to model merging, with the goal of optimizing language model performance through weight blending.
+
+## Contribute:
+> Thank you, Qwen3, for helping me to reconstruct this repo.
