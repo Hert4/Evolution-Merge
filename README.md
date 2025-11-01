@@ -71,24 +71,6 @@ best_weights, best_score, merged_model, tokenizer = evolutionary_merge(
 )
 ```
 
-## Project Structure
-
-```
-evolution_merge/
-├── evolution_merge/          # Main package directory
-│   ├── __init__.py          # Package initialization
-│   ├── core.py              # Core evolutionary merge implementation
-│   ├── main.py              # Main execution module
-│   └── config.py            # Configuration parameters
-├── examples/                # Example scripts
-├── tests/                   # Test files
-├── docs/                    # Documentation
-├── requirements.txt         # Python dependencies
-├── setup.py                 # Package setup file
-├── README.md               # This file
-└── LICENSE                 # License information
-```
-
 ## Requirements
 
 - Python 3.8+
@@ -114,3 +96,6 @@ This implementation is based on the concept of evolutionary computation applied 
 
 ## Contribute:
 > Thank you, Qwen3, for helping me to reconstruct this repo.
+
+## License
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0) — see the [LICENSE](LICENSE) file for details.
