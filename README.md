@@ -70,6 +70,16 @@ best_weights, best_score, merged_model, tokenizer = evolutionary_merge(
     eval_samples=100         # More evaluation samples
 )
 ```
+## Models:
+
+## 🧬 Models Using Evolutionary Merge
+
+| Model | Type | Size |
+|:------|:------|:------:|
+| <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="18"/> [**beyoru/EvolLLM**](https://huggingface.co/beyoru/EvolLLM) | Text Generation | 4B |
+| <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="18"/> [**beyoru/EvolLLM-Linh**](https://huggingface.co/beyoru/EvolLLM-Linh) | Text Generation | 4B |
+| <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="18"/> [**beyoru/Luna-Fusion-RP**](https://huggingface.co/beyoru/Luna-Fusion-RP) | Text Generation | 4B |
+
 
 ## Requirements
 
