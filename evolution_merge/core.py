@@ -13,7 +13,7 @@ import math
 from tqdm import tqdm
 import logging
 
-HUGGINGFACE_DATASET = ""
+HUGGINGFACE_DATASET = "openai/gsm8k"
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
