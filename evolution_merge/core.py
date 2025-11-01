@@ -2,7 +2,7 @@
 Core Evolutionary Merge Implementation
 
 This module implements the evolutionary algorithm for merging Large Language Models (LLMs)
-based on perplexity minimization.
+based on performance metric optimization.
 """
 
 import torch
@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=0.2, eval_samples=50):
     """
-    Evolutionary algorithm for merging LLMs based on perplexity minimization
+    Evolutionary algorithm for merging LLMs based on performance metric optimization
     
     Args:
         models: List of model specifications [{'name': 'model_name'}, ...]
@@ -33,7 +33,7 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
     Returns:
         Best weights for model merging and the merged model
     """
-    logger.info("Starting Evolutionary Model Merge (perplexity evaluation)...\n")
+    logger.info("Starting Evolutionary Model Merge (performance evaluation)...\n")
 
     # Load evaluation data
     eval_dataset = load_dataset(HUGGINGFACE_DATASET, "main") # for gsm8k use "gsm8k", "main"
@@ -55,8 +55,8 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
     # Initialize population with random weight distributions
     population = [np.random.dirichlet(np.ones(len(models))) for _ in range(population_size)]
 
-    def evaluate_perplexity(candidate_model):
-        """Calculate perplexity of the candidate model on eval_data"""
+    def evaluate_model_performance(candidate_model):
+        """Calculate a performance metric of the candidate model on eval_data"""
         candidate_model.to("cuda:0")  # Move model to GPU for evaluation
         candidate_model.eval()
 
@@ -87,11 +87,11 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
         torch.cuda.empty_cache()
 
         avg_loss = total_loss / total_tokens
-        ppl = math.exp(avg_loss)
-        return ppl
+        score = math.exp(avg_loss)
+        return score
 
     # Evolution loop
-    best_weights, best_score = None, float("inf")  # perplexity is better when lower
+    best_weights, best_score = None, float("inf")  # evaluation score
 
     for gen in tqdm(range(generations), desc="Generations", leave=True):
         logger.info(f"Generation {gen+1}/{generations}")
@@ -113,26 +113,26 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
                             merged_param += weights[i] * dict(model.named_parameters())[name].data.cpu()
                     param.data = merged_param
 
-            # Evaluate perplexity
-            score = evaluate_perplexity(candidate_model)
+            # Evaluate model performance
+            score = evaluate_model_performance(candidate_model)
             scores.append(score)
 
             # Clean up
             del candidate_model
             torch.cuda.empty_cache()
 
-        # Update best individual
-        best_idx = np.argmin(scores)  # Lower perplexity is better
+        # Update best individual (lower score is better)
+        best_idx = np.argmin(scores)  # Lower score is better
         if scores[best_idx] < best_score:
             best_score = scores[best_idx]
             best_weights = population[best_idx]
 
-        logger.info(f"Generation {gen+1} best PPL: {scores[best_idx]:.5f}")
+        logger.info(f"Generation {gen+1} best score: {scores[best_idx]:.5f}")
 
         # Generate next generation
         new_population = []
         elite_count = max(1, int(population_size * 0.2))
-        elite_indices = np.argsort(scores)[:elite_count]  # Lowest perplexities
+        elite_indices = np.argsort(scores)[:elite_count]  # Lowest scores
         for idx in elite_indices:
             new_population.append(population[idx])
 
@@ -155,7 +155,7 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
 
         population = new_population
 
-    logger.info(f"Best weights: {best_weights}, Best PPL: {best_score:.2f}")
+    logger.info(f"Best weights: {best_weights}, Best score: {best_score:.2f}")
     
     # Create final merged model with best weights
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
