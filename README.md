@@ -40,8 +40,8 @@ from evolution_merge.core import evolutionary_merge
 
 # Define models to merge (must have the same architecture)
 models = [
-    {'name': 'beyoru/MinCoder-4B-Exp'},
-    {'name': 'TMLR-Group-HF/Self-Certainty-Qwen3-8B-Base-MATH'}
+    {'name': 'prithivMLmods/Logics-Qwen3-Math-4B'},
+    {'name': 'beyoru/MinCoder-4B-Expert'}
 ]
 
 # Run evolutionary merge
