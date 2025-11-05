@@ -94,7 +94,7 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
             best_score = scores[best_idx]
             best_weights = population[best_idx]
 
-        logger.info(f"Generation {gen+1} best PPL: {scores[best_idx]:.5f}")
+        logger.info(f"Generation {gen+1} best score: {scores[best_idx]:.5f}")
 
         # Generate next generation
         new_population = []
@@ -122,7 +122,7 @@ def evolutionary_merge(models, population_size=10, generations=5, mutation_rate=
 
         population = new_population
 
-    logger.info(f"Best weights: {best_weights}, Best PPL: {best_score:.2f}")
+    logger.info(f"Best weights: {best_weights}, Best score: {best_score:.2f}")
     
     # Create final merged model with best weights
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
