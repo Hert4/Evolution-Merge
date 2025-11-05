@@ -22,7 +22,7 @@ def example_basic_usage():
     # Define models to merge (example models - make sure they have the same architecture)
     models = [
         {'name': 'beyoru/MinCoder-4B-Exp'},
-        {'name': 'TMLR-Group-HF/Self-Certainty-Qwen3-8B-Base-MATH'}
+        {'name': 'winglian/qwen3-4b-math'}
     ]
 
     
@@ -52,8 +52,8 @@ def example_custom_parameters():
     
     # Define models to merge
     models = [
-        {'name': 'microsoft/DialoGPT-medium'},
-        {'name': 'microsoft/DialoGPT-small'}
+        {'name': 'beyoru/MinCoder-4B-Exp'},
+        {'name': 'winglian/qwen3-4b-math'}
     ]
     
     print(f"Models to merge: {[model['name'] for model in models]}")
